@@ -258,7 +258,7 @@ object DefaultFlame {
     val deltaTemperature: Double) extends Flame {
 
   // Unlike the original C++ code we don't allow null flames
-  require(flameLength >= 0, "flame length must be zero or greater")
+  require(flameLength > 0, "flame length must be greater than zero")
   require(depthIgnited >= 0, "depth Ignited must be 0 or greater")
   require(Numerics.Distance.geq(flameLength, depthIgnited),
           "flame length must not be less than depth ignited")

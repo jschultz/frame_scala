@@ -1,6 +1,6 @@
 package ffm.fire
 
-import org.mockito.Matchers.any
+import org.mockito.ArgumentMatchers.any
 import org.mockito.Mockito.when
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks

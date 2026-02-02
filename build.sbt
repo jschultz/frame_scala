@@ -2,7 +2,7 @@ name := "ffm"
 
 description := "Forest flammability model"
 
-scalaVersion in ThisBuild := "2.12.2"
+ThisBuild / scalaVersion := "2.12.19"
 
 lazy val printClasspath = taskKey[Unit]("Print classpath")
 
@@ -10,7 +10,7 @@ lazy val commonSettings = Seq(
   version := "0.2.0",
   organization := "CSES",
   printClasspath := {
-    val els = (fullClasspath in Runtime).value.files map(_.getPath)
+    val els = (Runtime / fullClasspath).value.files map(_.getPath)
     print(els.mkString(java.io.File.pathSeparator))
   }
 )
@@ -19,7 +19,7 @@ lazy val testSettings = Seq(
   libraryDependencies ++= Seq(
     "org.scalatest" %% "scalatest" % "3.0.1" % "test",
     "org.scalacheck" %% "scalacheck" % "1.13.4" % "test",
-    "org.mockito" % "mockito-core" % "1.9.5" % "test"
+    "org.mockito" % "mockito-core" % "5.11.0" % "test"
   )
 )
 
@@ -74,5 +74,5 @@ lazy val runner = (project in file("runner")).
 // - download source and create Eclipse attachments for dependencies
 EclipseKeys.withSource := true
 // - don't generate a project definition for the root project
-EclipseKeys.skipParents in ThisBuild := true
+ThisBuild / EclipseKeys.skipParents := true
 
